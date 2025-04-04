@@ -47,7 +47,7 @@
   <!-- PDF Preview -->
   <mat-card>
     <div #invoiceContent style="padding: 20px; background: white; max-width: 100%; overflow-x: auto;">
-      <h2>Invoice</h2>
+      <h2>Invoice Preview</h2>
       <p><strong>Customer Name:</strong> {{ invoice.customerName }}</p>
       <p><strong>Address:</strong> {{ invoice.address }}</p>
       <p><strong>Date:</strong> {{ invoice.date }}</p>
@@ -57,20 +57,20 @@
           <tr>
             <th>Description</th>
             <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
+            <th style="text-align: right;">Price</th>
+            <th style="text-align: right;">Total</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of invoice.items">
             <td>{{ item.description }}</td>
             <td>{{ item.quantity }}</td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.quantity * item.price }}</td>
+            <td style="text-align: right;">{{ item.price | number: '1.2-2' }}</td>
+            <td style="text-align: right;">{{ (item.quantity * item.price)  | number: '1.2-2' }}</td>
           </tr>
           <tr>
             <td colspan="3" style="text-align: right"><strong>Grand Total:</strong></td>
-            <td><strong>{{ total }}</strong></td>
+            <td style="text-align: right;"><strong>{{ total | number: '1.2-2' }}</strong></td>
           </tr>
         </tbody>
       </table>
