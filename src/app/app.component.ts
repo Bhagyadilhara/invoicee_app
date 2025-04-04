@@ -31,6 +31,8 @@ export class AppComponent {
 
   @ViewChild('invoiceContent', { static: false }) invoiceContent!: ElementRef;
 
+  isPaid: boolean = false;
+
   addItem() {
     this.invoice.items.push({ description: '', quantity: 1, price: 0 });
   }
@@ -48,5 +50,14 @@ export class AppComponent {
     import('html2pdf.js').then(html2pdf => {
       html2pdf.default().from(element).save('invoice.pdf');
     });
+  }
+
+  // Example: Toggle the paid status
+  markAsPaid() {
+    this.isPaid = true;
+  }
+
+  togglePaid() {
+    this.isPaid = !this.isPaid;
   }
 }
