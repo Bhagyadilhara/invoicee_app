@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card>
+  <mat-card style="position: relative; padding: 20px; background: white; max-width: 100%; overflow-x: auto;">
     <h2>Invoice Generator</h2>
 
     <mat-form-field appearance="fill" class="full-width">
@@ -40,13 +40,17 @@
     <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
     <br /><br />
     <button mat-raised-button color="accent" (click)="generatePDF()">Generate PDF</button>
+    <br />
+    <button mat-raised-button color="primary" (click)="togglePaid()">
+      {{ isPaid ? 'Unmark as Paid' : 'Mark as Paid' }}
+    </button>
   </mat-card>
 
   <br />
 
   <!-- PDF Preview -->
   <mat-card>
-    <div #invoiceContent style="padding: 20px; background: white; max-width: 100%; overflow-x: auto;">
+    <div #invoiceContent style="position: relative; padding: 20px; background: white; max-width: 100%; overflow-x: auto;">
       <h2>Invoice Preview</h2>
       <p><strong>Customer Name:</strong> {{ invoice.customerName }}</p>
       <p><strong>Address:</strong> {{ invoice.address }}</p>
@@ -64,9 +68,9 @@
         <tbody>
           <tr *ngFor="let item of invoice.items">
             <td>{{ item.description }}</td>
-            <td>{{ item.quantity }}</td>
+            <td style="text-align: center;">{{ item.quantity }}</td>
             <td style="text-align: right;">{{ item.price | number: '1.2-2' }}</td>
-            <td style="text-align: right;">{{ (item.quantity * item.price)  | number: '1.2-2' }}</td>
+            <td style="text-align: right;">{{ (item.quantity * item.price) | number: '1.2-2' }}</td>
           </tr>
           <tr>
             <td colspan="3" style="text-align: right"><strong>Grand Total:</strong></td>
@@ -74,6 +78,11 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- Paid Seal -->
+      <div *ngIf="isPaid" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2; font-size: 48px; color: red; font-weight: bold; text-transform: uppercase; pointer-events: none;">
+        Paid
+      </div>
     </div>
   </mat-card>
 </div>
