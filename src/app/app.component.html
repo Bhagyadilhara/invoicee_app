@@ -1,71 +1,79 @@
-<mat-card>
-  <h2>Invoice Generator</h2>
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Customer Name</mat-label>
-    <input matInput [(ngModel)]="invoice.customerName" />
-  </mat-form-field>
+<div class="container">
+  <mat-card>
+    <h2>Invoice Generator</h2>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Address</mat-label>
-    <textarea matInput [(ngModel)]="invoice.address"></textarea>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Date</mat-label>
-    <input matInput type="date" [(ngModel)]="invoice.date" />
-  </mat-form-field>
-
-  <h3>Items</h3>
-  <div *ngFor="let item of invoice.items; let i = index">
-    <mat-form-field appearance="fill" class="item-input">
-      <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="item.description" />
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Customer Name</mat-label>
+      <input matInput [(ngModel)]="invoice.customerName" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="item-input">
-      <mat-label>Quantity</mat-label>
-      <input matInput type="number" [(ngModel)]="item.quantity" />
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Address</mat-label>
+      <textarea matInput [(ngModel)]="invoice.address"></textarea>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="item-input">
-      <mat-label>Price</mat-label>
-      <input matInput type="number" [(ngModel)]="item.price" />
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" [(ngModel)]="invoice.date" />
     </mat-form-field>
 
-    <button mat-raised-button color="warn" (click)="removeItem(i)">Remove</button>
+    <h3>Items</h3>
+    <div class="item-input-group" *ngFor="let item of invoice.items; let i = index">
+      <mat-form-field appearance="fill" class="item-input">
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="item.description" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="item-input">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" [(ngModel)]="item.quantity" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="item-input">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" [(ngModel)]="item.price" />
+      </mat-form-field>
+
+      <button mat-button color="warn" (click)="removeItem(i)">Remove</button>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
     <br /><br />
-  </div>
+    <button mat-raised-button color="accent" (click)="generatePDF()">Generate PDF</button>
+  </mat-card>
 
-  <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
-  <br /><br />
-  <button mat-raised-button color="accent" (click)="generatePDF()">Generate PDF</button>
-</mat-card>
+  <br />
 
-<br />
-
-<!-- Preview for PDF -->
-<div #invoiceContent style="padding: 20px; background: white">
-  <h2>Invoice</h2>
-  <p><strong>Customer Name:</strong> {{ invoice.customerName }}</p>
-  <p><strong>Address:</strong> {{ invoice.address }}</p>
-  <p><strong>Date:</strong> {{ invoice.date }}</p>
-  <hr />
-  <table border="1" width="100%" style="border-collapse: collapse">
-    <tr>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Total</th>
-    </tr>
-    <tr *ngFor="let item of invoice.items">
-      <td>{{ item.description }}</td>
-      <td>{{ item.quantity }}</td>
-      <td>{{ item.price }}</td>
-      <td>{{ item.quantity * item.price }}</td>
-    </tr>
-    <tr>
-      <td colspan="3" style="text-align: right"><strong>Grand Total:</strong></td>
-      <td><strong>{{ total }}</strong></td>
-    </tr>
-  </table>
+  <!-- PDF Preview -->
+  <mat-card>
+    <div #invoiceContent style="padding: 20px; background: white; max-width: 100%; overflow-x: auto;">
+      <h2>Invoice</h2>
+      <p><strong>Customer Name:</strong> {{ invoice.customerName }}</p>
+      <p><strong>Address:</strong> {{ invoice.address }}</p>
+      <p><strong>Date:</strong> {{ invoice.date }}</p>
+      <hr />
+      <table border="1" width="100%" style="border-collapse: collapse; word-break: break-word;">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoice.items">
+            <td>{{ item.description }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity * item.price }}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: right"><strong>Grand Total:</strong></td>
+            <td><strong>{{ total }}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
 </div>
