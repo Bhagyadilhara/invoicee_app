@@ -37,11 +37,16 @@
       <button mat-button color="warn" (click)="removeItem(i)">Remove</button>
     </div>
 
-    <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
+    <button mat-raised-button color="primary" (click)="addItem()">
+      <mat-icon>add</mat-icon> Add Item
+    </button>
     <br /><br />
-    <button mat-raised-button color="accent" (click)="generatePDF()">Generate PDF</button>
+    <button mat-raised-button color="accent" (click)="generatePDF()">
+      <mat-icon>picture_as_pdf</mat-icon> Generate PDF
+    </button>
     <br />
     <button mat-raised-button color="primary" (click)="togglePaid()">
+      <mat-icon>{{ isPaid ? 'cancel' : 'check_circle' }}</mat-icon>
       {{ isPaid ? 'Unmark as Paid' : 'Mark as Paid' }}
     </button>
   </mat-card>
