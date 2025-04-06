@@ -56,7 +56,19 @@
   <!-- PDF Preview -->
   <mat-card>
     <div #invoiceContent style="position: relative; padding: 20px; background: white; max-width: 100%; overflow-x: auto;">
-      <h2>Invoice Preview</h2>
+      <!-- Company Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h1 style="margin: 0;">Company</h1>
+          <p style="margin: 0;">1234 Street Name, City, State, ZIP</p>
+          <p style="margin: 0;">Email: info&#64;yourcompany.com | Phone: (123) 456-7890</p>
+        </div>
+        <div>
+          <img src="assets/Scorpio.png" alt="Company Logo" style="max-height: 80px;" />
+        </div>
+      </div>
+
+      <h2>Invoice</h2>
       <p><strong>Customer Name:</strong> {{ invoice.customerName }}</p>
       <p><strong>Address:</strong> {{ invoice.address }}</p>
       <p><strong>Date:</strong> {{ invoice.date }}</p>
