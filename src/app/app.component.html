@@ -44,7 +44,7 @@
         <mat-icon>add</mat-icon> Add Item
       </button>
       <button mat-raised-button color="accent" (click)="generatePDF()">
-        <mat-icon>picture_as_pdf</mat-icon> Generate PDF
+        <mat-icon>picture_as_pdf</mat-icon> Print PDF
       </button>
       <button mat-raised-button color="primary" (click)="togglePaid()">
         <mat-icon>{{ isPaid ? 'cancel' : 'check_circle' }}</mat-icon>
@@ -86,7 +86,7 @@
             <td>{{ item.description }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.price | number: '1.2-2' }}</td>
-            <td>{{ (item.quantity * item.price) | number: '1.2-2' }}</td>
+            <td>{{ (+item.quantity * +item.price) | number: '1.2-2' }}</td>
           </tr>
           <tr>
             <td colspan="3" class="grand-total-label">Grand Total:</td>
