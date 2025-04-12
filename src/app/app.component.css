@@ -1,7 +1,24 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
+  padding: 10px;
+}
+
+.invoice-card {
+  margin-bottom: 20px;
   padding: 20px;
+}
+
+.preview-card {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .full-width {
@@ -13,15 +30,84 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 10px;
+  align-items: center;
 }
 
 .item-input {
-  flex: 1 1 100%;
+  flex: 1 1 calc(33.33% - 10px);
 }
 
-@media (min-width: 600px) {
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.company-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.company-logo {
+  max-height: 80px;
+}
+
+.invoice-title {
+  text-align: center;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.invoice-table th,
+.invoice-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.grand-total-label {
+  text-align: right;
+  font-weight: bold;
+}
+
+.grand-total-value {
+  font-weight: bold;
+}
+
+.paid-seal {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.thank-you {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+@media (max-width: 600px) {
   .item-input {
-    flex: 1 1 30%;
+    flex: 1 1 100%;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
