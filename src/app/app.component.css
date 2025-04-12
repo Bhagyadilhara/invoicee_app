@@ -115,4 +115,15 @@
   button {
     display: none;
   }
+
+  .pdf-content {
+    padding: 20px;
+  }
+}
+
+.pdf-content {
+  padding: 20px;
+  margin: 0;
+  background-color: white;
+  color: black;
 }
