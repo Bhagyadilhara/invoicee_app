@@ -43,12 +43,12 @@
       <button mat-raised-button color="primary" (click)="addItem()">
         <mat-icon>add</mat-icon> Add Item
       </button>
-      <button mat-raised-button color="accent" (click)="generatePDF()">
-        <mat-icon>picture_as_pdf</mat-icon> Print PDF
-      </button>
       <button mat-raised-button color="primary" (click)="togglePaid()">
         <mat-icon>{{ isPaid ? 'cancel' : 'check_circle' }}</mat-icon>
         {{ isPaid ? 'Unmark as Paid' : 'Mark as Paid' }}
+      </button>
+      <button mat-raised-button color="accent" (click)="generatePDF()">
+        <mat-icon>picture_as_pdf</mat-icon> Print PDF
       </button>
     </div>
   </mat-card>
@@ -58,13 +58,14 @@
       <!-- Company Header -->
       <div class="company-header">
         <div>
-          <h2>Scorpio.lk</h2>
+          <!-- <h2>Scorpio.lk</h2> -->
+          <img src="assets/Scorpio.png" alt="Company Logo" class="company-logo" />
           <p>No.256, Street Name, City, State, ZIP</p>
           <p>Email: info&#64;gmail.com | Phone: +94 77 254 3673</p>
         </div>
-        <div>
+        <!-- <div>
           <img src="assets/Scorpio.png" alt="Company Logo" class="company-logo" />
-        </div>
+        </div> -->
       </div>
 
       <h2 class="invoice-title">Invoice</h2>
