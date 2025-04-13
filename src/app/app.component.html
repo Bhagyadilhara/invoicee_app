@@ -85,13 +85,13 @@
         <tbody>
           <tr *ngFor="let item of invoice.items">
             <td>{{ item.description }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.price | number: '1.2-2' }}</td>
-            <td>{{ (+item.quantity * +item.price) | number: '1.2-2' }}</td>
+            <td class="text-center">{{ item.quantity }}</td>
+            <td class="text-end">{{ item.price | number: '1.2-2' }}</td>
+            <td class="text-end">{{ (+item.quantity * +item.price) | number: '1.2-2' }}</td>
           </tr>
           <tr>
             <td colspan="3" class="grand-total-label">Grand Total:</td>
-            <td class="grand-total-value">{{ total | number: '1.2-2' }}</td>
+            <td class="grand-total-value text-end" >{{ total | number: '1.2-2' }}</td>
           </tr>
         </tbody>
       </table>
