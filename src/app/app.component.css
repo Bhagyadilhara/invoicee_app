@@ -72,12 +72,20 @@
 .invoice-table td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: center;
+  /*text-align: center; */
 }
 
 .grand-total-label {
   text-align: right;
   font-weight: bold;
+}
+
+.text-end {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .grand-total-value {
