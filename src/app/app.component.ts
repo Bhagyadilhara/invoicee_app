@@ -40,7 +40,10 @@ export class AppComponent {
   }
 
   removeItem(index: number) {
-    this.invoice.items.splice(index, 1);
+    const confirmed = window.confirm('Are you sure you want to delete this item?');
+    if (confirmed) {
+      this.invoice.items.splice(index, 1);
+    }
   }
 
   get total() {
