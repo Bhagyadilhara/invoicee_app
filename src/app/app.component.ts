@@ -28,7 +28,8 @@ export class AppComponent {
     customerName: '',
     address: '',
     date: new Date().toISOString().substring(0, 10),
-    items: [{ description: '', quantity: 1, price: '' }], // Set price as an empty string
+    items: [{ description: '', quantity: 1, price: '' }],
+    advance: 0 // <-- Add this line
   };
 
   @ViewChild('invoiceContent', { static: false }) invoiceContent!: ElementRef;
@@ -48,9 +49,14 @@ export class AppComponent {
 
   get total() {
     return this.invoice.items.reduce((sum, item) => {
-      const price = parseFloat(item.price) || 0; // Safely parse the price as a number
+      const price = parseFloat(item.price) || 0;
       return sum + item.quantity * price;
     }, 0);
+  }
+
+  get balance() {
+    // New getter for balance after advance
+    return this.total - (parseFloat(this.invoice.advance as any) || 0);
   }
 
   generatePDF() {
