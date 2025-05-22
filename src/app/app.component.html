@@ -17,6 +17,11 @@
       <input matInput type="date" [(ngModel)]="invoice.date" />
     </mat-form-field>
 
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Advance Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="invoice.advance" />
+    </mat-form-field>
+
     <h3 class="title">Items</h3>
     <div class="item-input-group" *ngFor="let item of invoice.items; let i = index">
       <mat-form-field appearance="outline" class="item-input">
@@ -60,15 +65,15 @@
         <div>
           <!-- <h2>Scorpio.lk</h2> -->
           <img src="assets/Scorpio.png" alt="Company Logo" class="company-logo" />
-          <p>No.256, Street Name, City, State, ZIP</p>
-          <p>Email: info&#64;gmail.com | Phone: +94 77 254 3673</p>
+          <p>No.395/7, Palanwaththa, Pannipitiya, Sri Lanka</p>
+          <p>Email: info&#64;gmail.com | Phone: +94 78 154 2101</p>
         </div>
         <!-- <div>
           <img src="assets/Scorpio.png" alt="Company Logo" class="company-logo" />
         </div> -->
       </div>
 
-      <h2 class="invoice-title">Invoice</h2>
+      <h2 class="invoice-title">INVOICE</h2>
       <p><strong>Customer Name:</strong> {{ invoice.customerName }}</p>
       <p><strong>Address:</strong> {{ invoice.address }}</p>
       <p><strong>Date:</strong> {{ invoice.date }}</p>
@@ -91,7 +96,15 @@
           </tr>
           <tr>
             <td colspan="3" class="grand-total-label">Grand Total:</td>
-            <td class="grand-total-value text-end" >{{ total | number: '1.2-2' }}</td>
+            <td class="grand-total-value text-end">{{ total | number: '1.2-2' }}</td>
+          </tr>
+          <tr *ngIf="invoice.advance">
+            <td colspan="3" class="grand-total-label">Advance Paid:</td>
+            <td class="grand-total-value text-end">-{{ invoice.advance | number: '1.2-2' }}</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="grand-total-label">Balance Due:</td>
+            <td class="grand-total-value text-end">{{ balance | number: '1.2-2' }}</td>
           </tr>
         </tbody>
       </table>
